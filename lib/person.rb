@@ -34,13 +34,13 @@ class Person
       end
 
       def take_bath
-        self.hygeine += 4
+        self.hygiene += 4
         return "♪ Rub-a-dub just relaxing in the tub ♫"
       end
 
       def work_out
         self.happiness += 2
-        self.hygeine -= 3
+        self.hygiene -= 3
         return "♪ another one bites the dust ♫"
       end
 
@@ -49,6 +49,26 @@ class Person
         self.happiness += 3
         friend.happiness += 3
         return "Hi #{friend.name}! It's #{self.name}. How are you?"
+      end
+
+      def get_paid(salary)
+        self.bank_account += salary
+        self.happiness += 1
+        return "all about the benjamins"
+      end
+
+      def start_conversation(person, topic)
+        talkers = [self, person]
+        if topic == 'politics'
+          talkers.each {|talker| talker.happiness -= 2}
+          talker_one, talker_two = ['partisan','lobbyist']
+          return "blah blah #{talker_one} blah #{talker_two}"
+      elsif topic == 'weather'
+        talkers.each {|i| i.happiness += 1}
+        talker_one, talker_two = ['sun','rain']
+        return "blah blah #{talker_one} blah #{talker_two}"
+      end
+      return "blah blah blah blah blah"
       end
 end
 
